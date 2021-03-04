@@ -16,7 +16,7 @@ pipeline {
         stage('Building Account Service'){
             agent any
             steps {
-                sh 'docker.build -f java-project/account-service/Dockerfile'
+                sh 'docker build -f java-project/account-service/Dockerfile .'
             }
         }
     }
