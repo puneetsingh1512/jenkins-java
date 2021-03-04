@@ -18,9 +18,11 @@ pipeline {
             steps {
                 sh '''
                     cd java-project/account-service/
-                    docker build -t puneetss/account_service .
-                    docker push puneetss/account_service
                 '''
+                dir('java-project/account-service'){
+                    def customImage = docker.build("account_service")
+                    customImage.push()
+                }
             }
         }
     }
