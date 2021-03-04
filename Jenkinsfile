@@ -19,7 +19,7 @@ pipeline {
                 sh '''
                     cd java-project/account-service/
                     docker build -t puneetss/account_service .
-                    docker push puneetss/account_service:1
+                    docker push puneetss/account_service
                 '''
             }
         }
