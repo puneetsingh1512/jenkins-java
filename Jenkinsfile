@@ -13,7 +13,7 @@ pipeline {
                 }
             }
         
-        stage('Building Account Service'){
+        stage('Account Service Build and Push'){
             agent any
             environment {
                 Dockerhub_cred = credentials('dockerhub')
@@ -22,7 +22,7 @@ pipeline {
                 sh '''
                     cd java-project/account-service/
                     docker build -t puneetss/account_service .
-                    docker login -u $Dockerhub_cred_USR -p $Dockerhub_cred_PSW
+                    docker login -u $Dockerhub_cred_USR --password-stdin $Dockerhub_cred_PSW
                     docker push puneetss/account_service:latest
                 ''' 
             }
