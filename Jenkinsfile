@@ -17,8 +17,10 @@ pipeline {
         stage('Building Account Service'){
             agent any
             steps {
-                sh 'cd java-project/account-service'
-                unstash 'account_jar'
+                dir('java-project/account-service/target')
+                {
+                    unstash 'account_jar'
+                }
                 sh 'docker build -f java-project/account-service/Dockerfile .'
             }
         }
