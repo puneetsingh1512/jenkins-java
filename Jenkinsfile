@@ -18,6 +18,7 @@ pipeline {
             agent any
             steps {
                 unstash name:'account'
+                sh 'ls'
                 sh 'docker build -f java-project/account-service/Dockerfile .'
             }
         }
