@@ -19,7 +19,7 @@ pipeline {
             steps {
                 dir('java-project/account-service/target')
                 {
-                    unstash 'account'
+                    unstash name:'account'
                 }
                 sh 'docker build -f java-project/account-service/Dockerfile .'
             }
