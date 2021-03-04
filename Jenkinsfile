@@ -10,7 +10,6 @@ pipeline {
             }
             steps {
                     sh 'mvn -f java-project/pom.xml -B -DskipTests clean package'
-                    stash includes: 'java-project/account-service/target/**/*', name: 'account'   
                 }
             }
         
@@ -20,7 +19,7 @@ pipeline {
                 sh '''
                     cd java-project/account-service/
                     docker build -t puneetss/account_service .
-                    docker push puneetss/account_service
+                    docker push puneetss/account_service:1
                 '''
             }
         }
