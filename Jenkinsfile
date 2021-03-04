@@ -19,10 +19,9 @@ pipeline {
                 sh '''
                     cd java-project/account-service/
                     docker build -t puneetss/account_service .
+                    docker login puneetss -p bdcfb6fe-9dce-4e42-82d5-55ff687f4f18
+                    docker push puneetss/account_service:latest
                 ''' 
-                withDockerRegistry([ credentialsId: "bdcfb6fe-9dce-4e42-82d5-55ff687f4f18", url: "https://hub.docker.com" ]) {
-                  sh 'docker push puneetss/account_service:latest'
-                }
             }
         }
     }
