@@ -12,7 +12,7 @@ pipeline {
                     sh 'mvn -f java-project/pom.xml -B -DskipTests clean package' 
                 }
             }
-        }
+        
         stage('Building Account Service'){
             agent any
             steps {
