@@ -10,7 +10,7 @@ pipeline {
             }
             steps {
                     sh 'mvn -f java-project/pom.xml -B -DskipTests clean package'
-                    stash includes: 'java-project/account-service/target/**/*', name: 'account_jar'   
+                    stash includes: 'java-project/account-service/target/**/*', name: 'account'   
                 }
             }
         
@@ -19,7 +19,7 @@ pipeline {
             steps {
                 dir('java-project/account-service/target')
                 {
-                    unstash 'account_jar'
+                    unstash 'account'
                 }
                 sh 'docker build -f java-project/account-service/Dockerfile .'
             }
