@@ -8,7 +8,7 @@ pipeline {
             }
         }
         stages {
-            stage('Build') { 
+            stage('Java Build') { 
                 steps {
                     sh 'mvn -f java-project/pom.xml -B -DskipTests clean package' 
                 }
@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Building Account Service'){
             steps {
-                'docker.build -f java-project/account-service/Dockerfile'
+                sh 'docker.build -f java-project/account-service/Dockerfile'
             }
         }
     }
