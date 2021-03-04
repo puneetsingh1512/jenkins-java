@@ -16,9 +16,7 @@ pipeline {
         }
         stage('Building Account Service'){
             steps {
-                script {
-                    dockerImage = docker.build -f java-project/account-service/Dockerfile
-                }
+                'docker.build -f java-project/account-service/Dockerfile'
             }
         }
     }
