@@ -9,13 +9,17 @@ pipeline {
                 }
             }
             steps {
-                    sh 'mvn -f java-project/pom.xml -B -DskipTests clean package' 
+                    sh 'mvn -f java-project/pom.xml -B -DskipTests clean package'
+                    stash includes: 'java-project/account-service/target/*', name: 'account_jar'   
                 }
             }
         
         stage('Building Account Service'){
             agent any
             steps {
+                dir ('java-project/account-service/target'){
+                    unstash 'account_jar'
+                }
                 sh 'docker build -f java-project/account-service/Dockerfile .'
             }
         }
