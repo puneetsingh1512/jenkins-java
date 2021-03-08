@@ -57,5 +57,16 @@ pipeline {
                 }
             }
         }
+        stage('Docker Compose and test'){
+            agent any
+            steps {
+                sh '''
+                    docker-compose up -d
+                    sleep 90
+                    test-scripts/abc.sh
+                    
+                ''' 
+            }
+        }
     }
 }
