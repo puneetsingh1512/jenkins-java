@@ -62,8 +62,9 @@ pipeline {
             steps {
                 sh '''
                     docker-compose up -d
-                    sleep 90
-                    bash test-scripts/abc.sh
+                    sleep 1
+                    chmod +x -R ${env.WORKSPACE}
+                    test-scripts/abc.sh
                     
                 ''' 
             }
