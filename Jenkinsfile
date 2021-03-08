@@ -42,6 +42,7 @@ pipeline {
             }
         }
         stage('SonarQube analysis') {
+            agent any
             steps {
                 withSonarQubeEnv('Sonarqube') {
                     // Optionally use a Maven environment you've configured already
