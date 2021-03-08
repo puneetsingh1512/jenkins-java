@@ -12,7 +12,7 @@ pipeline {
                     sh 'mvn -f java-project/pom.xml -B -DskipTests clean package'
                 }
             }
-        /*
+        
         stage('Account Service Build and Push'){
             agent any
             environment {
@@ -56,7 +56,7 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
         stage('Docker Compose and test'){
             agent any
             steps {
@@ -64,7 +64,7 @@ pipeline {
                     docker-compose up -d
                     sleep 1
                     bash test-scripts/abc.sh
-                    
+                    docker-compose down
                 ''' 
             }
         }
