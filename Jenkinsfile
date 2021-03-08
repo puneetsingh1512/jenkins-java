@@ -49,7 +49,7 @@ pipeline {
                 }
             }
             steps {
-                withSonarQubeEnv(CredentialsId: '9d63a8c5e7fd530181f1b2f985ee5ed6f55c0f91', installationName:'Sonarqube') {
+                withSonarQubeEnv(credentialsId: '9d63a8c5e7fd530181f1b2f985ee5ed6f55c0f91', installationName:'Sonarqube') {
                     // Optionally use a Maven environment you've configured already
                     withMaven(maven:'Maven 3.5') {
                         sh 'mvn -f java-project/pom.xml clean package sonar:sonar'
