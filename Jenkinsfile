@@ -63,7 +63,7 @@ pipeline {
                 sh '''
                     docker-compose up -d
                     sleep 90
-                    test-scripts/abc.sh
+                    bash test-scripts/abc.sh
                     
                 ''' 
             }
