@@ -41,7 +41,7 @@ pipeline {
                 ''' 
             }
         }
-        stage('build && SonarQube analysis') {
+        stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv('Sonarqube') {
                     // Optionally use a Maven environment you've configured already
