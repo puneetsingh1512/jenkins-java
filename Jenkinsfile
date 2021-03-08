@@ -63,8 +63,7 @@ pipeline {
                 sh '''
                     docker-compose up -d
                     sleep 1
-                    chmod +x -R ${env.WORKSPACE}
-                    test-scripts/abc.sh
+                    bash test-scripts/abc.sh
                     
                 ''' 
             }
