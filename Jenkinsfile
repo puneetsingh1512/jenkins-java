@@ -42,12 +42,7 @@ pipeline {
             }
         }
         stage('SonarQube analysis') {
-            agent {
-                docker {
-                    image 'maven:3-alpine' 
-                    args '-v /root/.m2:/root/.m2' 
-                }
-            }
+            agent any
             steps {
                 withSonarQubeEnv('Sonarqube') {
                     // Optionally use a Maven environment you've configured already
