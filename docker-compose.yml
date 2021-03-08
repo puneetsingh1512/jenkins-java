@@ -1,0 +1,16 @@
+version: "3.4"
+services:
+  account-service:
+    image: puneetss/account_service
+    ports:
+      - 1567:1567
+    networks:
+      - mynetwork
+  customer-service:
+    image: puneetss/customer_service
+    ports:
+      - 1898:1898
+    networks:
+      - mynetwork
+networks:
+  mynetwork:
