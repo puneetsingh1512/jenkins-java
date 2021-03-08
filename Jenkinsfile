@@ -27,5 +27,19 @@ pipeline {
                 ''' 
             }
         }
+        stage('Customer Service Build and Push'){
+            agent any
+            environment {
+                Dockerhub_cred = credentials('dockerhub')
+            }
+            steps {
+                sh '''
+                    cd java-project/customer-service/
+                    docker build -t puneetss/customer_service .
+                    docker login -u $Dockerhub_cred_USR -p $Dockerhub_cred_PSW
+                    docker push puneetss/customer_service:latest
+                ''' 
+            }
+        }
     }
 }
