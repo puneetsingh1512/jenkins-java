@@ -12,7 +12,7 @@ pipeline {
                     sh 'mvn -f java-project/pom.xml -B -DskipTests clean package'
                 }
             }
-        
+        /*
         stage('Account Service Build and Push'){
             agent any
             environment {
@@ -67,6 +67,13 @@ pipeline {
                     docker-compose down
                 ''' 
             }
+        }*/
+    }
+    post {
+        agent any
+        always {
+            junit '**/nosetests.xml'
+            step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: '**/coverage.xml', failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false])
         }
     }
 }
